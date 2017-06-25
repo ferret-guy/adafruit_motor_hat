@@ -55,7 +55,7 @@ class AdafruitStepperMotor(object):
 		else:
 			raise ValueError('MotorHAT Stepper must be between 1 and 2 inclusive')
 
-	def setSpeed(self, rpm):
+	def set_speed(self, rpm):
 		"""
 		Set the target motor speed in rpm, motor step count is used to calculate the step delay
 		:param rpm:
@@ -255,6 +255,15 @@ class AdafruitStepperMotor(object):
 			time.sleep(s_per_s)
 
 	def align_step(self, reverse=False):
+		"""
+		Align the current step position with a full step
+		:param reverse:
+			run in reverse
+		:type reverse:
+			bool
+		:return:
+			None
+		"""
 		while (self.currentstep != 0) and (self.currentstep != self.MICROSTEPS):
 			self.micro_step(reverse=reverse)
 
@@ -313,6 +322,21 @@ class AdafruitMotorHAT(object):
 	RELEASE = 3
 
 	def __init__(self, addr=0x60, freq=1600, i2c=None, i2c_bus=None):
+		"""
+		Initialize a Motor Hat
+		:param addr:
+			Motor Hat address
+		:type addr:
+			hex
+		:param freq:
+			pwm frequency
+		:type freq:
+			int
+		:param i2c:
+			the i2c device
+		:param i2c_bus:
+			the i2c bus to utilize
+		"""
 		self._frequency = freq
 		self.motors = [AdafruitDCMotor(self, m) for m in range(4)]
 		self.steppers = [AdafruitStepperMotor(self, 1), AdafruitStepperMotor(self, 2)]
@@ -320,6 +344,19 @@ class AdafruitMotorHAT(object):
 		self._pwm.setPWMFreq(self._frequency)
 
 	def set_pin(self, pin, value):
+		"""
+		Set a pin output state
+		:param pin:
+			pin number
+		:type pin:
+			int
+		:param value:
+			pin state 0, or 1
+		:type value:
+			int
+		:return:
+			None
+		"""
 		if pin not in range(16):
 			raise ValueError('PWM pin must be between 0 and 15 inclusive')
 		if value not in [0, 1]:
@@ -330,11 +367,29 @@ class AdafruitMotorHAT(object):
 			self._pwm.setPWM(pin, 4096, 0)
 
 	def get_stepper(self, num):
+		"""
+		Get a stepper instance
+		:param num:
+			the stepper to get 1, or 2
+		:type num:
+			int
+		:return:
+			:class:`AdafruitStepperMotor'
+		"""
 		if num not in [1, 2]:
 			raise ValueError('MotorHAT Stepper must be between 1 and 2 inclusive')
 		return self.steppers[num - 1]
 
 	def get_motor(self, num):
+		"""
+		Get a motor instance
+		:param num:
+			the stepper to get 1-4
+		:type num:
+			int
+		:return:
+			:class:`AdafruitDCMotor'
+		"""
 		if num not in [1, 2, 3, 4]:
 			raise ValueError('MotorHAT Motor must be between 1 and 4 inclusive')
 		return self.motors[num - 1]

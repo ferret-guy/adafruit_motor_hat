@@ -3,10 +3,7 @@
 
 """Tests for `adafruit_motor_hat` package."""
 
-
 import unittest
-
-from adafruit_motor_hat import adafruit_motor_hat
 
 
 class TestAdafruit_motor_hat(unittest.TestCase):

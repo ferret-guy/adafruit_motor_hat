@@ -28,10 +28,12 @@ An improved pip available Adafruit Motor Hat Package
 Features
 --------
 
-* TODO
+* Improve the Stepper performance for the original Adafruit-Motor-HAT-Python-Library
 
 Credits
 ---------
+
+This package is based and mostly contains code from Adafruit-Motor-HAT-Python-Library
 
 This package was created with Cookiecutter_ and the `audreyr/cookiecutter-pypackage`_ project template.
 

@@ -12,16 +12,12 @@ with open('HISTORY.rst') as history_file:
     history = history_file.read()
 
 requirements = [
-    # TODO: put package requirements here
+    'Adafruit-GPIO>=0.7'
 ]
 
-setup_requirements = [
-    # TODO(ferret-guy): put setup requirements (distutils extensions, etc.) here
-]
+setup_requirements = []
 
-test_requirements = [
-    # TODO: put package test requirements here
-]
+test_requirements = []
 
 setup(
     name='adafruit_motor_hat',
@@ -41,6 +37,7 @@ setup(
         'Development Status :: 2 - Pre-Alpha',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: MIT License',
+        'Operating System :: POSIX :: Linux',
         'Natural Language :: English',
         "Programming Language :: Python :: 2",
         'Programming Language :: Python :: 2.6',

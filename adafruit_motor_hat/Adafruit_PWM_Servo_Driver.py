@@ -86,7 +86,7 @@ class PWM(object):
 		self.i2c.write8(self.__MODE1, mode1)
 		time.sleep(0.005)  # wait for oscillator
 
-	def setPWMFreq(self, freq):
+	def setPWMFreq(self, freq, correctionFactor=1.0):
 		"""
 		Set the PWM frequency in Hz
 
@@ -94,6 +94,10 @@ class PWM(object):
 			frequency in Hz
 		:type freq:
 			int
+		:param correctionFactor:
+			correction factor for drifting pwm putout
+		:type correctionFactor:
+			float
 		:return:
 			None
 		"""
@@ -103,7 +107,7 @@ class PWM(object):
 		prescaleval -= 1.0
 		logger.debug("Setting PWM frequency to %d Hz" % freq)
 		logger.debug("Estimated pre-scale: %d" % prescaleval)
-		prescale = math.floor(prescaleval + 0.5)
+		prescale = math.ceil(prescaleval * correctionFactor + 0.5)
 		logger.debug("Final pre-scale: %d" % prescale)
 		oldmode = self.i2c.readU8(self.__MODE1)
 		newmode = (oldmode & 0x7F) | 0x10  # sleep

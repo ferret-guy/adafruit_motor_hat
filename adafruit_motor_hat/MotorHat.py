@@ -74,7 +74,7 @@ class AdafruitStepperMotor(object):
 		:param microstep:
 			Is this cleaning up for a microstep?
 		:type microstep:
-			Bool
+			bool
 		:return:
 			The current step
 		"""
@@ -162,7 +162,7 @@ class AdafruitStepperMotor(object):
 		:param reverse:
 			step in reverse
 		:type reverse:
-			Bool
+			bool
 		:return:
 			None
 		"""
@@ -196,7 +196,7 @@ class AdafruitStepperMotor(object):
 		:param reverse:
 			step in reverse
 		:type reverse:
-			Bool
+			bool
 		:return:
 			None
 		"""
@@ -222,7 +222,7 @@ class AdafruitStepperMotor(object):
 		:param reverse:
 			step in reverse
 		:type reverse:
-			Bool
+			bool
 		:return:
 			None
 		"""

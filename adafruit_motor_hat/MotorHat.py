@@ -58,6 +58,7 @@ class AdafruitStepperMotor(object):
 	def set_speed(self, rpm):
 		"""
 		Set the target motor speed in rpm, motor step count is used to calculate the step delay
+
 		:param rpm:
 			Target RPM
 		:type rpm:
@@ -71,6 +72,7 @@ class AdafruitStepperMotor(object):
 	def _step(self, microstep=False):
 		"""
 		Internal step execution function
+
 		:param microstep:
 			Is this cleaning up for a microstep?
 		:type microstep:
@@ -121,6 +123,7 @@ class AdafruitStepperMotor(object):
 	def step(self, steps=1, reverse=False):
 		"""
 		Simple single step
+
 		:param steps:
 			The number of steps to execute
 		:type steps:
@@ -155,6 +158,7 @@ class AdafruitStepperMotor(object):
 	def double_step(self, steps=1, reverse=False):
 		"""
 		Double stepping, 2 coils at once
+
 		:param steps:
 			The number of steps to execute
 		:type steps:
@@ -189,6 +193,7 @@ class AdafruitStepperMotor(object):
 	def interleaved_step(self, steps=1, reverse=False):
 		"""
 		Interleaved stepping, single stepping and interleaved stepping
+
 		:param steps:
 			The number of steps to execute
 		:type steps:
@@ -215,6 +220,7 @@ class AdafruitStepperMotor(object):
 	def micro_step(self, steps=1, reverse=False):
 		"""
 		Microstepping
+
 		:param steps:
 			The number of steps to execute
 		:type steps:
@@ -257,6 +263,7 @@ class AdafruitStepperMotor(object):
 	def align_step(self, reverse=False):
 		"""
 		Align the current step position with a full step
+
 		:param reverse:
 			run in reverse
 		:type reverse:
@@ -271,7 +278,7 @@ class AdafruitStepperMotor(object):
 class AdafruitDCMotor(object):
 	def __init__(self, controller, num):
 		self.MC = controller
-		self.motornum = num - 1
+		self.motornum = num
 
 		if self.motornum == 0:
 			pwm = 8
@@ -290,7 +297,7 @@ class AdafruitDCMotor(object):
 			in2 = 6
 			in1 = 5
 		else:
-			raise ValueError('MotorHAT Motor must be between 1 and 4 inclusive')
+			raise ValueError('MotorHAT Motor must be between 0 and 3 inclusive')
 		self.PWMpin = pwm
 		self.IN1pin = in1
 		self.IN2pin = in2
@@ -324,6 +331,7 @@ class AdafruitMotorHAT(object):
 	def __init__(self, addr=0x60, freq=1600, i2c=None, i2c_bus=None):
 		"""
 		Initialize a Motor Hat
+
 		:param addr:
 			Motor Hat address
 		:type addr:
@@ -346,6 +354,7 @@ class AdafruitMotorHAT(object):
 	def set_pin(self, pin, value):
 		"""
 		Set a pin output state
+
 		:param pin:
 			pin number
 		:type pin:
@@ -369,6 +378,7 @@ class AdafruitMotorHAT(object):
 	def get_stepper(self, num):
 		"""
 		Get a stepper instance
+
 		:param num:
 			the stepper to get 1, or 2
 		:type num:
@@ -383,6 +393,7 @@ class AdafruitMotorHAT(object):
 	def get_motor(self, num):
 		"""
 		Get a motor instance
+
 		:param num:
 			the stepper to get 1-4
 		:type num:

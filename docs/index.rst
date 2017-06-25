@@ -9,8 +9,8 @@ Contents:
    readme
    installation
    usage
-	      reference
    modules
+	      reference
    contributing
    authors
    history

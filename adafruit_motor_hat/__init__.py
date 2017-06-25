@@ -4,7 +4,7 @@
 
 __author__ = """Mark Omo"""
 __email__ = 'mark@markomo.me'
-__version__ = '0.1.0'
+__version__ = '0.2.0'
 
 import Adafruit_PWM_Servo_Driver
 import MotorHat

@@ -21,7 +21,7 @@ test_requirements = []
 
 setup(
     name='adafruit_motor_hat',
-    version='0.1.0',
+	version='0.2.0',
     description="An improved pip available Adafruit Motor Hat Package",
     long_description=readme + '\n\n' + history,
     author="Mark Omo",

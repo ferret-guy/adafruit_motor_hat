@@ -10,7 +10,7 @@ Contents:
    installation
    usage
    modules
-	      reference
+   reference
    contributing
    authors
    history
